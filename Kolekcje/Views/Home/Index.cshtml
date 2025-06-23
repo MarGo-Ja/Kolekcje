@@ -1,0 +1,96 @@
+﻿
+
+@{
+    ViewData["Title"] = "Strona główna";
+}
+
+<div class="p-4">  @*div z zawartością strony w CSS*@
+
+<!-- Ładowanie ikon z Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+
+
+<div class="text-center mt-3 fade-in">
+    <!-- Logo aplikacji -->
+    <img src="~/images/logo-kolekcje3.png" alt="Logo Kolekcje" class="logo-img" />
+
+    <h1 style="font-size: 32px; font-weight: 600; margin-bottom: 20px;">
+        Witamy w aplikacji Kolekcje!
+    </h1>
+
+    <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 24px;">
+        Zarządzaj swoimi zbiorami z łatwością
+    </h2>
+
+    <p style="font-size: 18px; max-width: 800px; margin: 0 auto 20px;">
+        Dodawaj, edytuj i przeszukuj elementy kolekcji – od książek, przez znaczki, aż po filmy. <br />
+        Prosto, szybko i intuicyjnie.
+    </p>
+
+
+</div>
+
+
+    <div class="row justify-content-center mt-4 fade-in">
+        <div class="col-md-3 text-center">
+            <a asp-controller="Collections" asp-action="Create" class="text-decoration-none feature-text">
+                <div class="feature-icon">
+                    <i class="bi bi-book"></i>
+                </div>
+                <p><strong>Dodawaj nowe elementy</strong></p>
+            </a>
+        </div>
+        <div class="col-md-3 text-center">
+            <a asp-controller="Collections" asp-action="Index" class="text-decoration-none feature-text">
+                <div class="feature-icon">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+                <p><strong>Edytuj swoje wpisy</strong></p>
+            </a>
+        </div>
+        <div class="col-md-3 text-center">
+            <a asp-controller="Collections" asp-action="Index" class="text-decoration-none feature-text">
+                <div class="feature-icon">
+                    <i class="bi bi-search"></i>
+                </div>
+                <p><strong>Wyszukuj kolekcje</strong></p>
+            </a>
+        </div>
+    </div>
+
+  
+
+<div class="row mt-4">
+    <div class="col-md-6 text-center">
+        <div class="alert alert-info fs-4"> <!-- fs decyduje o wielkości liter w napisie "Liczba pozycji 1 - największe im wyższy nr tym mniejszy tekst -->
+            Liczba pozycji w kolekcjach: <strong>@ViewBag.LiczbaPozycji</strong>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card fs-5"> <!-- TU dodano fs-5, które decyduje o wielkości liter w tabeli. -->
+            <!-- <a asp-controller="Collections" asp-action="Index" class="text-decoration-none text-dark"> Tak było przed kotwicą - anchorem -->
+            <a asp-controller="Collections" asp-action="Index" asp-fragment="koniec-tabeli" class="text-decoration-none text-dark"> <!--Tak jest obecnie z anchorem-->
+                <div class="card-header">Ostatnio dodane elementy</div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var item in ViewBag.OstatnieKolekcje as List<Kolekcje.Models.Collection>)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>@item.Title</strong>
+                                   w kategorii 
+                                @item.Category?.Name
+                            </div>
+                            @if (!string.IsNullOrEmpty(item.ImagePath))
+                            {
+                                <img src="@item.ImagePath" alt="miniatura" style="max-width: 200px;" />
+                            }
+                        </li>
+                    }
+                </ul>
+            </a>
+        </div>
+    </div>
+</div>
+
+</div> @*div z zawartością strony w CSS*@

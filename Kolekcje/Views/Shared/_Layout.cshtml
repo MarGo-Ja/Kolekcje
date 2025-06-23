@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Kolekcje</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Kolekcje.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VT0e8jqzPmnRZfKh9u53jNnNCHTohDx7xSPn5nS7tYOwBOepz8DW1KUe7x78Vd2b" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark text-light">
+    <header>
+        <nav id="mainNavbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Kolekcje</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1" id="navbarLinks">
+
+                        <!--Dodałem 17.05.2025r. -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Collections" asp-action="Create">Dodaj obiekt</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Collections" asp-action="Index">Moje kolekcje</a>
+                        </li>
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+
+                <!-- Dark/Light mode button -->
+                <div class="form-check form-switch ms-auto">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                    <label class="form-check-label" for="switchCheckDefault">
+                        <i id="themeIcon" class="bi bi-moon-fill"></i>
+                    </label>
+                </div>
+            </div>
+            <!-- Tu był button wcześniej xD-->
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer id="mainFooter" class="border-top footer text-light bg-dark">
+        <div class="container">
+            &copy; 2025 - Kolekcje - Izabela - Małgorzata - Krzysztof - <a asp-area="" asp-controller="Home" asp-action="Index">Kolekcje</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+5hb7x4HFom0Zt2cPqZxOYuExU8MS+y1c8Avzkt" crossorigin="anonymous"></script>
+    <!-- Dark/Light mode skrypt -->
+    <script>
+        function applyTheme(theme) {
+            const body = document.body;
+            const navbar = document.getElementById("mainNavbar");
+            const footer = document.getElementById("mainFooter");
+            const switcher = document.getElementById("switchCheckDefault");
+            const navLinks = document.querySelectorAll("#navbarLinks .nav-link");
+            const themeIcon = document.getElementById("themeIcon");
+
+            // Reset klas
+            body.classList.remove("bg-dark", "text-light", "bg-light", "text-dark");
+            navbar.classList.remove("navbar-dark", "navbar-light", "bg-dark", "bg-light");
+            footer.classList.remove("bg-dark", "bg-light", "text-light", "text-dark");
+
+            // Reset kolorów linków
+            navLinks.forEach(link => {
+                link.classList.remove("text-light", "text-dark");
+            });
+
+            if (theme === "light") {
+                body.classList.add("bg-light", "text-dark");
+                navbar.classList.add("navbar-light", "bg-light");
+                footer.classList.add("bg-light", "text-dark");
+                navLinks.forEach(link => {
+                    link.classList.add("text-dark");
+                });
+                switcher.checked = true;
+            } else {
+                body.classList.add("bg-dark", "text-light");
+                navbar.classList.add("navbar-dark", "bg-dark");
+                footer.classList.add("bg-dark", "text-light");
+                navLinks.forEach(link => {
+                    link.classList.add("text-light");
+                });
+                switcher.checked = false;
+            }
+
+            // Reset ikon
+            themeIcon.classList.remove("bi-moon-fill", "bi-sun-fill");
+
+            if (theme === "light") {
+                themeIcon.classList.add("bi-sun-fill");
+            } else {
+                themeIcon.classList.add("bi-moon-fill");
+            }
+
+            localStorage.setItem("theme", theme);
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedTheme = localStorage.getItem("theme") || "dark";
+            applyTheme(savedTheme);
+
+            document.getElementById("switchCheckDefault").addEventListener("change", function () {
+                const selectedTheme = this.checked ? "light" : "dark";
+                applyTheme(selectedTheme);
+            });
+        });
+    </script>
+
+</body>
+</html>

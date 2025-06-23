@@ -1,0 +1,291 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.light-mode {
+   background-color: #ffffff;
+   color: #000000;
+}
+
+/*<style >*/
+/*Strona g³ówna - animacja. Te style zosta³y dodane 27.05.2025r. o godz. 22.56*/
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #0d6efd;
+}
+
+.logo-img {
+    width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/*Kolor elementu pokazuj¹cego liczbê el. w kolekcji*/
+.alert-info {
+    background-color: #1AC79E !important;
+    color: #ffffff;
+}
+
+/* Kolory ikon */
+.feature-icon {
+    color: #1AC79E !important;
+}
+
+
+.btn-primary {
+    background-color: #1AC79E !important;
+    border-color: transparent !important;
+    color: #fff !important;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: #159c7f !important;
+        border-color: transparent !important;
+        color: #fff !important;
+    }
+
+.fancy-button {
+    background: #1AC79E;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+    .fancy-button:hover {
+        background: #1AC79E;
+        transform: translateY(-2px);
+    }
+
+.bg-custom {
+    background-color: #1AC79E !important;
+    color: white !important;
+}
+
+.liczba-pozycji {
+    font-size: 1.1rem;
+    padding: 0.6em 1.2em; 
+    margin-bottom: 2rem; 
+    display: inline-block;
+    border-radius: 0.5rem;
+}
+
+.btn-outline-primary,
+.btn-outline-info {
+    border-color: #1AC79E;
+    color: #1AC79E;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-info:hover {
+    background-color: #1AC79E;
+    color: white;
+}
+
+
+
+/* Tabela styl bez krawêdzi */
+#TabelaMojeKolekcje {
+    border-collapse: separate;
+    border-spacing: 8px;
+}
+
+/* Komórki nag³ówków styl */
+#TabelaMojeKolekcje th {
+    border: none;    
+    border-radius: 12px;    
+    padding: 12px;    
+    text-align: center;    
+}            
+
+/* Stylowanie komórek */    
+#TabelaMojeKolekcje td {    
+    background-color: #3C3C3C;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    vertical-align: middle;
+    text-align: center;
+    color: #ffffff;
+}
+
+body.bg-light #TabelaMojeKolekcje td {
+    background-color: #E8E8E8;
+    color: #000000;
+}
+
+#TabelaMojeKolekcje td.actions-cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 12px;
+    background-color: #3C3C3C;
+    border-radius: 12px;
+}
+
+#TabelaMojeKolekcje .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+body.bg-light #TabelaMojeKolekcje td.actions-cell {
+    background-color: #f0f0f0;
+}
+
+
+/* T³o Nag³ówki Tabela Kolekcje */
+#TabelaMojeKolekcje th {
+    background-color: #1AC79E !important;
+}
+
+/* Tekst kolor nag³ówki (dark mode) */
+#TabelaMojeKolekcje th {
+    color: #ffffff;
+}
+
+/* Tekst kolor nag³ówki (light mode) */
+body.bg-light #TabelaMojeKolekcje th {
+    color: #000000;
+}
+
+/* Tekst kolor komórki (dark mode) */
+#TabelaMojeKolekcje td {
+    color: #ffffff;
+}
+
+/* Tekst kolor komórki (light mode) */
+body.bg-light #TabelaMojeKolekcje td {
+    color: #000000;
+}
+
+/* Zaokr¹glenie rogów tabeli*/
+#TabelaMojeKolekcje thead tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+
+#TabelaMojeKolekcje thead tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+
+/* Dark/Light mode addition do Strony G³ównej*/
+/* Tryb ciemny */
+.feature-text {
+    color: #ffffff;
+}
+
+/* Tryb jasny */
+body.bg-light .feature-text {
+    color: #000000;
+}
+
+
+
+/*¯eby tekst w formularzach nie zmienia³ siê wraz z zmian¹ motywu*/
+
+body:not(.bg-light) .form-control {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #444;
+}
+
+/* motyw jasny */
+body.bg-light .form-control {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ced4da;
+}
+
+
+
+
+/*Drukowanie*/
+
+@media print {
+    /* Ukryj wszystko */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Poka¿ tylko tabelê */
+    .only-print, .only-print * {
+        visibility: visible;
+    }
+
+    /* Umieœæ tabelê na górze */
+    .only-print {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    /* Ukryj kolumny checkboxów i akcji */
+    .only-print th.zaznacz,    
+    .only-print td.zaznacz,    
+    .only-print th.actions,    
+    .only-print td.actions {    
+    display: none !important;        
+    }        
+
+    /* Wymuœ zachowanie kolorów t³a w druku */    
+    .only-print th,    
+    .only-print td {    
+        background-color: #f0f0f0 !important;    
+        -webkit-print-color-adjust: exact;    
+        print-color-adjust: exact;    
+        color: #000 !important; 
+    }    
+
+    body {
+        color: #000 !important;
+    }
+        
+
+    @page {
+        margin: 1cm;
+    }
+}
